@@ -1,0 +1,94 @@
+cff-version: 1.2.0
+title: "WW-DHSVM: Watershed Workflow, retargeted from ATS to DHSVM"
+message: >-
+  If you use WW-DHSVM in your work, please cite it as below, and please
+  also cite Watershed Workflow and DHSVM — this tool is a fork of the
+  former and writes inputs for the latter.
+type: software
+version: 1.0.0
+date-released: "2026-08-28"
+license: MIT
+license-url: "https://github.com/UConn-EFC/ww-dhsvm/blob/main/LICENSE"
+repository-code: "https://github.com/UConn-EFC/ww-dhsvm"
+url: "https://github.com/UConn-EFC/ww-dhsvm"
+
+authors:
+  - given-names: Zhi
+    family-names: Li
+    email: zhi.2.li@uconn.edu
+    affiliation: University of Connecticut
+    orcid: "https://orcid.org/0000-0002-6240-8971"
+
+abstract: >-
+  WW-DHSVM builds complete, runnable cases for the Distributed Hydrology
+  Soil Vegetation Model (DHSVM) from a USGS HUC code or a watershed
+  polygon. It is a fork of Watershed Workflow v2.1.0 with the ATS
+  unstructured-mesh half removed and a DHSVM half added: a regular model
+  grid, DHSVM's headerless binary maps, terrain conditioning and D8 flow
+  routing confined to the basin, channel delineation with basin-derived
+  hydraulic classes, USDA texture and NLCD crosswalks, initial model
+  states, the configuration file, and station meteorology from AORC,
+  Daymet or NOAA HRRR. Every stage is instrumented with diagnostics and
+  figures. The worked example is the entire Connecticut River Basin at
+  150 m.
+
+keywords:
+  - hydrology
+  - DHSVM
+  - watershed modeling
+  - hydrologic modeling
+  - distributed hydrology
+  - geospatial
+  - Python
+
+references:
+  - type: article
+    title: >-
+      Watershed Workflow: A toolset for parameterizing data-intensive,
+      integrated hydrologic models
+    authors:
+      - given-names: Ethan T.
+        family-names: Coon
+      - given-names: Pin
+        family-names: Shuai
+    journal: Environmental Modelling & Software
+    volume: 157
+    start: 105502
+    year: 2022
+    doi: 10.1016/j.envsoft.2022.105502
+    notes: The upstream project this tool forks.
+
+  - type: article
+    title: >-
+      A distributed hydrology-vegetation model for complex terrain
+    authors:
+      - given-names: Mark S.
+        family-names: Wigmosta
+      - given-names: Lance W.
+        family-names: Vail
+      - given-names: Dennis P.
+        family-names: Lettenmaier
+    journal: Water Resources Research
+    volume: 30
+    issue: 6
+    start: 1665
+    end: 1679
+    year: 1994
+    doi: 10.1029/94WR00436
+    notes: The model this tool writes inputs for.
+
+  - type: article
+    title: >-
+      Parallelization of the DHSVM hydrologic model for coupled
+      hydrology and land-surface applications
+    authors:
+      - given-names: William A.
+        family-names: Perkins
+    journal: Environmental Modelling & Software
+    volume: 122
+    start: 104533
+    year: 2019
+    doi: 10.1016/j.envsoft.2019.104533
+    notes: >-
+      The parallel DHSVM branch used for the scaling results. Abbreviated
+      author list; see the DOI for the full one.

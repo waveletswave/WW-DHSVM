@@ -1,0 +1,25 @@
+# Data caches written by the source managers.  Large, and reproducible
+# with demo/fetch_*.py -- see the Quickstart in the README.
+# Anchored to the repository root: ww_dhsvm/data/ holds the package's own
+# parameter tables and must be tracked.
+/data/
+/cache/
+notebooks/data/
+demo/cache_ct/
+demo/*.log
+
+# Built model cases and their output
+demo/ConnecticutRiverBasin/
+demo/scaling/*/
+tests/synthetic_case/
+
+# Third-party source and builds -- see README for how to obtain and
+# build DHSVM, and patches/ for the fix that must be applied.
+build/
+external/
+upstream-ww/
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store

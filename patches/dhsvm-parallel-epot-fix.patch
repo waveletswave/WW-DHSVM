@@ -1,0 +1,50 @@
+Fix aggregated potential-ET unit conversion in parallel DHSVM
+
+The DHSVM parallel branch (pnnl/DHSVM-PNNL, branch `parallel`) last synced
+with `master` on 2020-09-11.  On 2021-06-10 the serial `master` branch fixed
+a unit-conversion bug in Aggregate.c (commit 902bb2a, "Update Aggregate.c")
+that the parallel branch never received.
+
+EvapoTranspiration.c computes EPot as a rate in m/s -- its own comment says
+so ("Calculate the evaporation rate in m/s"), and the line below it divides
+MoistureFlux by Dt.  Converting that rate to a depth over the timestep
+requires MULTIPLYING by Dt.  Both branches divided.
+
+In the parallel branch the NPixels normalisation was refactored into the
+APPLY_MACRO block, so only the Dt term remains here and the fix is a single
+character.  The error is a factor of Dt^2 -- about 1e8 at a 3 h timestep --
+which leaves aggregated potential ET around eight orders of magnitude too
+small.
+
+The effect is DIAGNOSTIC ONLY: MassBalance.c forms its Output term from
+Evap.ETot (actual ET), not EPot, so the simulated water balance is
+unaffected.  It corrupts the PotTransp.Story* columns of Aggregated.Values.
+
+Verified on the Lower Connecticut River Basin: before the fix the physical
+constraint EPot >= EAct (potential >= actual transpiration) was violated in
+46 of 114 timesteps; after the fix it holds in all of them.
+
+Apply with:
+    cd <DHSVM-PNNL checkout, branch parallel>
+    patch -p1 < dhsvm-parallel-epot-fix.patch
+
+--- a/DHSVM/sourcecode/Aggregate.c
++++ b/DHSVM/sourcecode/Aggregate.c
+@@ -352,7 +352,16 @@
+   
+   for (i = 0; i < Veg->MaxLayers + 1; i++) {
+     /* convert EPot from m/s to m */
+-    Total->Evap.EPot[i] /= Dt;
++    /* WW-DHSVM: ported from the serial master branch, commit 902bb2a
++       (2021-06-10, "Update Aggregate.c"), which the parallel branch never
++       received -- it last synced with master on 2020-09-11.  Converting a
++       rate in m/s to a depth in m over the timestep requires MULTIPLYING
++       by Dt; the original divided, leaving aggregated potential ET wrong
++       by a factor of Dt^2 (about 1e8 at a 3 h timestep).  Diagnostic only:
++       MassBalance.c uses Evap.ETot, not EPot, so the simulated water
++       balance was never affected.  The NPixels normalisation is applied
++       separately here by the MACRO above, so only the Dt term changes. */
++    Total->Evap.EPot[i] *= Dt;
+   }
+ 
+ 

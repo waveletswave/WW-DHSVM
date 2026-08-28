@@ -1,0 +1,48 @@
+# Conda environment for WW-DHSVM.
+#
+#   conda env create -f environment.yml
+#   conda activate ww-dhsvm
+#
+# The HyRiver stack (py3dep / pygeohydro / pynhd) and Herbie come from PyPI
+# because conda-forge lags them; everything with compiled geospatial
+# dependencies comes from conda-forge so GDAL/PROJ stay consistent.
+name: ww-dhsvm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - gdal
+  - libgdal-core
+  - pip
+  - pip:
+      - attrs>=26.1.0
+      - cfgrib>=0.9.15.1
+      - cftime>=1.6.5
+      - dask>=2026.7.1
+      - eccodes>=2.48.0
+      - folium>=0.20.0
+      - geopandas>=1.1.4
+      - h5py>=3.16.0
+      - herbie-data>=2026.3.0
+      - mapclassify>=2.11.0
+      - matplotlib>=3.11.1
+      - netcdf4>=1.7.4
+      - numba>=0.66.0
+      - numpy>=2.4.6
+      - pandas>=3.0.5
+      - py3dep>=0.19.0
+      - pyflwdir>=0.5.12
+      - pygeohydro>=0.19.4
+      - pynhd>=0.19.4
+      - pyproj>=3.7.2
+      - rasterio>=1.5.0
+      - requests-cache
+      - rioxarray>=0.23.0
+      - rosetta-soil>=0.3.2
+      - s3fs>=2026.7.0
+      - scipy>=1.18.0
+      - shapely>=2.1.2
+      - xarray>=2026.7.0
+      - zarr>=3.3.0
+      - pytest
+      - jupyterlab

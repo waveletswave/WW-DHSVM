@@ -1,0 +1,52 @@
+WW-DHSVM
+========
+
+Author and maintainer
+---------------------
+
+Zhi Li <zhi.2.li@uconn.edu>
+  University of Connecticut
+  https://github.com/ZhiLiHydro
+
+Maintained under https://github.com/UConn-EFC.
+
+
+Inherited work
+--------------
+
+WW-DHSVM is a fork of Watershed Workflow v2.1.0.  A substantial part of
+this repository is that project's work rather than ours -- in particular
+the whole of ww_dhsvm/sources/ (the source-manager architecture and the
+data-source implementations for WBD, NHD, 3DEP, NLCD, NRCS/SSURGO,
+SoilGrids, POLARIS, Pelletier, GLHYMPS, Daymet, AORC, MODIS/AppEEARS,
+HyRiver, hf_hydrodata and BASIN-3D), together with crs.py, warp.py,
+colors.py, dynamic_colormaps.py, scalebar.py, io.py, utils.py, data.py
+and their companions.
+
+That code remains under its original 3-clause BSD licence, reproduced in
+LICENSE.watershed-workflow.  Credit for it belongs to:
+
+  Ethan T. Coon, Pin Shuai, and the Watershed Workflow contributors
+  https://github.com/environmental-modeling-workflows/watershed-workflow
+
+  Coon, E. T., & Shuai, P. (2022).  Watershed Workflow: A toolset for
+  parameterizing data-intensive, integrated hydrologic models.
+  Environmental Modelling & Software, 157, 105502.
+
+
+Models and data this tool depends on
+------------------------------------
+
+DHSVM is developed at Pacific Northwest National Laboratory and is not
+redistributed here; see https://github.com/pnnl/DHSVM-PNNL.
+
+  Wigmosta, M. S., Vail, L. W., & Lettenmaier, D. P. (1994).  A
+  distributed hydrology-vegetation model for complex terrain.  Water
+  Resources Research, 30(6), 1665-1679.
+
+  Perkins, W. A., et al. (2019).  Environmental Modelling & Software,
+  122, 104533.  (the parallel branch)
+
+Data products -- USGS WBD, NHDPlus and 3DEP; MRLC NLCD; POLARIS; NOAA
+AORC and HRRR -- are downloaded at run time and are not redistributed
+here.  Each carries its own licence and citation requirements.
