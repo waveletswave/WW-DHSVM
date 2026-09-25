@@ -1,6 +1,6 @@
 # Test data
 
-`camp_branch_28m_dem.tif`: the Camp Branch (Coweeta, NC) DEM at 28.158 m,
+`camp_branch_28m_dem.tif`: the Camp Branch (Nantahala National Forest, NC) DEM at 28.158 m,
 74 x 82 cells, EPSG:32617, clipped to the watershed (no-data outside),
 3.44 km2 in 4334 cells; the USGS 1 arc-second tile n36w084 reprojected and
 clipped by the DHSVM_Stream_Toolkit (`clip.py`). It is the grid of the
